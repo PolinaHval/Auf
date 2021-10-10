@@ -9,9 +9,10 @@ import java.io.File;
 public class BrowserService {
 
     private WebDriver driver =null;
+    ReadProperties readProperties = new ReadProperties();
 
     public BrowserService() {
-        String browserName = new ReadProperties().getBrowserName();
+        String browserName = readProperties.getBrowserName();
 
         switch(browserName.toLowerCase()){
             case "chrome":
@@ -26,7 +27,7 @@ public class BrowserService {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--disable-gpu");
                 chromeOptions.addArguments("--start-maximized");
-                chromeOptions.setHeadless(new ReadProperties().isHeadless());
+                chromeOptions.setHeadless(readProperties.isHeadless());
 
                 driver = new ChromeDriver(chromeOptions);
 
