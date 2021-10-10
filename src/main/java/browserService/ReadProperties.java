@@ -16,15 +16,15 @@ public class ReadProperties {
     }
 
     public String getURL() {
-        return properties.getProperty("url");
+        return properties.getProperty("URL");
     }
 
     public String getApiURL() {
-        return properties.getProperty("apiurl");
+        return properties.getProperty("apiURL");
     }
 
     public String getBrowserName() {
-        return properties.getProperty(  "browser");
+        return properties.getProperty("browserType");
     }
 
     public boolean isHeadless() {
