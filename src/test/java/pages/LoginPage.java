@@ -7,47 +7,45 @@ import org.openqa.selenium.WebElement;
 
 public class LoginPage extends BasePage {
 
-    public String ENDPOINT ="/auth/login";
+    private static String ENDPOINT = "/auth/login";
 
-    public By NAME_SELECTOR = By.id("name");
-    public By PSW_SELECTOR = By.id("password");
-    public By BUTTON_SELECTOR = By.id("button_primary");
+    private static By loginSelector = By.id("name");
+    private static By passwordSelector = By.id("password");
+    private static By buttonSelector = By.id("button_primary");
+    private static By errorMessage = By.className("error-text");
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
+    public LoginPage(WebDriver driver, boolean openPageByUrl) {
+        super(driver, openPageByUrl);
     }
 
-    public void openPage (){
-        driver.get(BASE_URL+ENDPOINT);
+    @Override
+    protected void openPage() {
+        driver.get(BASE_URL + ENDPOINT);
     }
 
-    public boolean isOpenedPage (){
-        return driver.findElement(BUTTON_SELECTOR).isDisplayed();
+    @Override
+    public boolean isPageOpened() {
+        try {
+            return driver.findElement(By.id("button_primary")).isDisplayed();
+        } catch (Exception exception) {
+            return false;
+        }
     }
 
-    private WebElement getName(){
-        return driver.findElement(NAME_SELECTOR);
-
+    public WebElement getLogin() {
+        return driver.findElement(loginSelector);
     }
 
-    private WebElement getPassword(){
-        return driver.findElement(PSW_SELECTOR);
+    public WebElement getPassword() {
+        return driver.findElement(passwordSelector);
     }
 
-    private WebElement getButton(){
-        return driver.findElement(BUTTON_SELECTOR);
+    public WebElement getButton() {
+        return driver.findElement(buttonSelector);
     }
 
-    public void setName( String username){
-       getName().sendKeys(username);
-
-    }
-
-    public void setPsw( String psw){
-        getPassword().sendKeys(psw);
-    }
-
-    public void setButton(){
-        getButton().click();
+    public String getErrorMessage() {
+        return driver.findElement(errorMessage).getText();
     }
 }
+
