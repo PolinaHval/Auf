@@ -19,7 +19,7 @@ public class BaseTest {
     @BeforeMethod
     public void setUp(){
         this.driver = new BrowserService().getDriver();
-        driver.get(new ReadProperties().getURL()); // сделать логин страницу на тест рейле, прописать методы, ие
+        driver.get(new ReadProperties().getURL());
 
     }
 

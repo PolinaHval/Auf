@@ -4,6 +4,7 @@ import baseEntities.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import pages.LoginPage;
 import steps.LoginSteps;
 
 public class MainTest extends BaseTest {
@@ -12,8 +13,16 @@ public class MainTest extends BaseTest {
     public void loginPositiveTest() {
 
         LoginSteps loginSteps = new LoginSteps(driver);
-        loginSteps.login("liza.khval@mail.ru", "Polina123");
-
+        loginSteps.login(readProperties.getUserName(), readProperties.getPassword());
         Assert.assertTrue(true);
+    }
+
+    @Test
+    public void loginNegativeTest() {
+
+        LoginSteps loginSteps = new LoginSteps(driver);
+        loginSteps.login("fail", readProperties.getPassword());
+        Assert.assertEquals(new LoginPage(driver,false).getErrorMessage(),
+                "Email/Login or Password is incorrect. Please try again.");
     }
 }
