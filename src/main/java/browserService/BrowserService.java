@@ -29,6 +29,7 @@ public class BrowserService {
                 driver = new ChromeDriver(chromeOptions);
                 driver.manage().window().maximize();
                 break;
+
             case "ie":
                 classLoader = getClass().getClassLoader();
                 file = new File(classLoader.getResource("drivers/IEDriverServer.exe").getFile());

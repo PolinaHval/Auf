@@ -44,7 +44,7 @@ public class ReadProperties {
     }
 
     public String getName() {
-        return properties.getProperty("name");
+        return properties.getProperty("nameProject");
     }
 
     public String getNewName() {
