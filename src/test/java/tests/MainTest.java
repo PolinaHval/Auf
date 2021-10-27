@@ -25,4 +25,5 @@ public class MainTest extends BaseTest {
         Assert.assertEquals(new LoginPage(driver,false).getErrorMessage(),
                 "Email/Login or Password is incorrect. Please try again.");
     }
+
 }
